@@ -16,6 +16,7 @@ int main()
         writeTest.addEntry("ball.png", "files/ball.png");
         writeTest.addEntry("audio.mp3", "files/audio.mp3");
         writeTest.addEntry("Text Document.txt", "files/Text Document.txt");
+        writeTest.addEntry("icon.png", "files/icon.png");
         writeTest.write();
 
         vector<string> entryNamesList = writeTest.getEntryNames();
