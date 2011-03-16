@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1300290404 source:d:\my dropbox\programming\resourcefile\resourcefile.cpp
+	"ResourceFile.h"
+
+1300290619 d:\my dropbox\programming\resourcefile\resourcefile.h
+	<fstream>
+	<string>
+	<vector>
+	<map>
+	"order32.h"
+
+1300289711 source:d:\my dropbox\programming\resourcefile\main.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<vector>
+	"ResourceFile.h"
+
+1300289861 d:\my dropbox\programming\resourcefile\order32.h
+	<limits.h>
+	<stdint.h>
+
