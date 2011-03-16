@@ -33,7 +33,7 @@
 		</Compiler>
 		<Unit filename="ResourceFile.cpp" />
 		<Unit filename="ResourceFile.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="example.cpp" />
 		<Unit filename="order32.h" />
 		<Extensions>
 			<code_completion />
