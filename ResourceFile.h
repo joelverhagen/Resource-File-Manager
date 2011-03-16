@@ -14,6 +14,8 @@
 #include <vector>
 #include <map>
 
+#include <iostream>
+
 using namespace std;
 
 #include "order32.h"

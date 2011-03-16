@@ -64,7 +64,7 @@ int getFileSize(const string &fileName)
     }
 
     file.seekg(0, ios::end);
-    int fileSize = file.tellg();
+    int fileSize = (int)file.tellg();
     file.close();
 
     return fileSize;
@@ -216,22 +216,16 @@ int ResourceFileWriter::getHeaderSize()
 
 void ResourceFileWriter::writeNumber(ofstream &outputFile, unsigned int number)
 {
-    // find the current file offset
-    int currentOffset = (int)outputFile.tellp();
-
     // convert the number to little-endian
     intComponents numberComponents;
     numberComponents.number = number;
     convertToLittleEndian(&numberComponents.bytes[0]);
 
     // dump the number into the output stream
-    outputFile << numberComponents.bytes;
-
-    // make sure all four bits are written
-    for(unsigned int i = (int)outputFile.tellp(); i < currentOffset + sizeof(intComponents); i++)
-    {
-        outputFile << '\0';
-    }
+    outputFile << numberComponents.bytes[0];
+	outputFile << numberComponents.bytes[1];
+	outputFile << numberComponents.bytes[2];
+	outputFile << numberComponents.bytes[3];
 }
 
 ResourceFileReader::ResourceFileReader(string filePath) : ResourceFileBase(filePath)
@@ -250,7 +244,7 @@ bool ResourceFileReader::read()
     // read in the first four bytes, where the magic word should be
     intComponents currentMagicWord;
     currentMagicWord.number = 0;
-    inputFile.readsome(currentMagicWord.bytes, 4);
+    inputFile.read(currentMagicWord.bytes, 4);
 
     convertLittleEndianToNative(currentMagicWord.bytes);
     if(currentMagicWord.number != magicWord) // make sure the magic word matches
@@ -261,19 +255,19 @@ bool ResourceFileReader::read()
     // read in the header size and convert from little-endian
     intComponents headerSize;
     headerSize.number = 0;
-    inputFile.readsome(headerSize.bytes, 4);
+    inputFile.read(headerSize.bytes, 4);
     convertLittleEndianToNative(headerSize.bytes);
 
     // read in the file count and convert from little-endian
     intComponents fileCount;
     fileCount.number = 0;
-    inputFile.readsome(fileCount.bytes, 4);
+    inputFile.read(fileCount.bytes, 4);
     convertLittleEndianToNative(fileCount.bytes);
 
     // read the entire file table block into memory
     int fileTableSize = headerSize.number - 3 * sizeof(int);
     char * headerData = new char[fileTableSize];
-    inputFile.readsome(headerData, fileTableSize);
+    inputFile.read(headerData, fileTableSize);
 
     // parse the file table
     int fileTableOffset = 0;

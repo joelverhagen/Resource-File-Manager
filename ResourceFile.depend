@@ -20,3 +20,22 @@
 	<limits.h>
 	<stdint.h>
 
+1300296644 source:d:\my dropbox\programming\resource-file-manager\example.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<vector>
+	"ResourceFile.h"
+
+1300294507 d:\my dropbox\programming\resource-file-manager\resourcefile.h
+	<fstream>
+	<string>
+	<vector>
+	<map>
+	<iostream>
+	"order32.h"
+
+1300289861 d:\my dropbox\programming\resource-file-manager\order32.h
+	<limits.h>
+	<stdint.h>
+
