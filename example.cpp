@@ -39,7 +39,7 @@ int main()
 
         vector<string> entryNamesList = readTest.getEntryNames();
 
-        cout << "The following files arte in writeTest.dat." << endl;
+        cout << "The following files are in writeTest.dat." << endl;
         for(vector<string>::iterator i = entryNamesList.begin(); i != entryNamesList.end(); i++)
         {
             string entryName = (*i);
