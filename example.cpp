@@ -6,8 +6,6 @@ using namespace std;
 
 #include "ResourceFile.h"
 
-using namespace std;
-
 int main()
 {
     {
